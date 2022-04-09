@@ -1,0 +1,83 @@
+version: "3.9"
+
+services:
+  api:
+    image: google-sc
+    build:
+      context: .
+      dockerfile: "Dockerfile"
+    container_name: api
+    restart: always
+    depends_on:
+      - redis
+    env_file:
+      - ./env/.env.dev
+    working_dir: "/app"
+    command: sh -c "/tmp/api-envsubst-log-ini.sh;python3 api.py"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.80'
+          memory: 850M
+        reservations:
+          cpus: '0.25'
+          memory: 450M
+    volumes:
+      - ${APP_DIR_HOST}:${APP_DIR_CONT}:ro
+      - ${LOG_DIR_HOST}:${LOG_DIR_CONT}:rw
+      - ${LOG_CONF_HOST}:${LOG_CONF_CONT}:ro
+    # The expose option is only for the debug/development mode.
+    # Don't add this option in the production server.
+    ports:
+      - "${PORT_EXPOSE}:${PORT}"
+    links:
+      - "${REDIS_CON_NAME}:${REDIS_SRV_DOMAIN}"
+
+  redis:
+    image: redis:latest
+    container_name: api_cache
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.15'
+          memory: 150M
+        reservations:
+          cpus: '0.10'
+          memory: 50M
+    volumes:
+      - ${REDIS_CONF}:${REDIS_CONF_CON}:ro
+    # The expose option is only for the debug/development mode.
+    # Don't add this option in the production server.
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT_CON}
+
+  nginx:
+    image: api_revers_proxy
+    build:
+      context: "./configs/nginx/"
+      dockerfile: "Dockerfile"
+    container_name: revers_proxy
+    env_file:
+      - env/.env.dev
+    restart: always
+    depends_on:
+      - api
+    deploy:
+      resources:
+        limits:
+          cpus: '0.10'
+          memory: 50M
+        reservations:
+          cpus: '0.08'
+          memory: 30M
+    volumes:
+      - ${NGINX_LOG_DIR_HOST}:${NGINX_LOG_DIR_CONT}:rw
+    ports:
+      - "${NGINX_EXPOSE_PORT}:${NGINX_LISTEN_PORT}"
+    links:
+      - "${APP_NAME}:${APP_CONT_DOMAIN}"
+
+volumes:
+    pgdata:
+        external: true

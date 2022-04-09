@@ -1,0 +1,5 @@
+app/__pycache__/
+app/configs/__pycache__/
+data/logs/api_log/*.log
+data/logs/nginx_log/*.log
+data/logs/redis_log/*.log
