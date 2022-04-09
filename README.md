@@ -1,6 +1,8 @@
 # Google Crawler
 This api will parse and organizes the search results from google. In the backend the the API usage pyppeteer in a docker container to parse the google search result.<br>
 
+## This is the brach which is running on my server. And it has a limit 6 request per minute.
+
 ## Here's the Swagger UI for the API EndPoint.
 Live Demo -> [https://crawler.0x30c4/api/v1/docs](https://crawler.0x30c4.dev/api/v1/docs)
 

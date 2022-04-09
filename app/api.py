@@ -35,8 +35,8 @@ app = FastAPI(
                 version=version,
                 contact=contact,
                 openapi_tags=tags_metadata,
-                openapi_url="/api/{}/openapi.json".format(API_ENDPOINT_URL),
-                docs_url="/api/{}/docs".format(API_ENDPOINT_URL)
+                openapi_url="/{}/openapi.json".format(API_ENDPOINT_URL),
+                docs_url="/{}/docs".format(API_ENDPOINT_URL)
              )
 
 redis_cache_obj = RedisCache(

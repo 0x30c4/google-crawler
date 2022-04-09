@@ -5,6 +5,7 @@ COPY ./nginx.conf /etc/nginx/nginx.conf.tpl
 COPY ./default.conf.tpl /etc/nginx/conf.d/default.conf.tpl
 COPY ./global.conf /etc/nginx/conf.d/global.conf.tpl
 COPY ./loggin.conf /etc/nginx/conf.d/loggin.conf
+COPY ./limitrate.conf /etc/nginx/conf.d/limitrate.conf
 COPY ./run.sh /run.sh
 
 USER root
