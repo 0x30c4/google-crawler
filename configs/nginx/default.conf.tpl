@@ -13,6 +13,6 @@ server {
     }
 
     location /api/ {
-        proxy_pass http://backend/;
+        proxy_pass http://backend/api/;
     }
 }
