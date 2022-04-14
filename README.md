@@ -3,7 +3,7 @@ This api will parse and organizes the search results from google. In the backend
 
 ## Here's the Swagger UI for the API EndPoint.
 ### The live demo version which is running on my server. And it has a limit 6 request per minute.
-Live Demo -> [https://crawler.0x30c4/api/v1/docs](https://crawler.0x30c4.dev/api/v1/docs) <br>
+Live Demo -> [https://crawler.0x30c4/v1/docs](https://crawler.0x30c4.dev/v1/docs) <br>
 [Live Demo Brach](https://github.com/0x30c4/google-crawler/tree/prod-version/demo-on-coco)
 
 
