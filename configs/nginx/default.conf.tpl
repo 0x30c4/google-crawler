@@ -8,7 +8,7 @@ server {
     add_header Access-Control-Allow-Origin *;
 
     location / {
-        limit_req zone=limitfordemo burst=1;
+        limit_req zone=limitfordemo burst=100;
         proxy_pass http://backend/;
     }
 

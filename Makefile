@@ -13,6 +13,9 @@ run-dev:
 
 run:
 	./scripts/chmod-666-to-log-files.sh
+	-docker image rm -f api_revers_proxy_prod
+	docker build -t google-sc-prod .
+	docker build -t api_revers_proxy -f ./configs/nginx/Dockerfile ./configs/nginx/
 	docker-compose --env-file env/.env.prod -f docker-compose.prod.yml up -d
 
 restart-dev:
