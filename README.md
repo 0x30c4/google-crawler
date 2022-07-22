@@ -11,9 +11,6 @@ Live Demo -> [https://crawler.0x30c4/v1/docs](https://crawler.0x30c4.dev/v1/docs
 * [Production](#prod_ver)
 * [Development](#dev_ver) 
 
-# The Application Architecture
-<img src="https://raw.githubusercontent.com/0x30c4/google-crawler/main/images/Overview.png">
-
 ## Built With.
 * [Docker](https://www.docker.com) - Platform and Software Deployment
 * [FastApi](https://fastapi.tiangolo.com/) - Backend Frame-work.
