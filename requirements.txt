@@ -19,4 +19,4 @@ zipp==3.7.0
 bs4==0.0.1
 fastapi==0.75.0
 uvicorn==0.15.0
-redis==4.2.1
+redis==4.4.4
